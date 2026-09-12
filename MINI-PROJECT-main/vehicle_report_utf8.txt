@@ -1,0 +1,967 @@
+﻿VEHICLE DAMAGE ASSESMENT FOR INSURANCE          CLAIM(AUTOMOTIVE/INSURANCE)
+
+MINI PROJECT REPORT 
+Submitted by
+ HARISH P                                     142223104037
+                                    HARISH T N                                 142223104038
+ HARISHKUMAR S                      142223104039
+ HARSHVARDHAN S P                142223104041
+
+in partial fulfilment for the award of the degree 
+of 
+BACHELOR OF ENGINEERING
+ in 
+COMPUTER SCIENCE AND ENGINEERING
+
+ SRM VALLIAMMAI ENGINEERING COLLEGE 
+(AN AUTONOMOUS INSITUTION) 
+SRM NAGAR, KATTANKULATHUR,
+ CHENGALPATTU 
+ANNA UNIVERSITY: CHENNAI 600 025 
+JUNE 2026
+
+
+
+BONAFIDE CERTIFICATE
+
+Certified that this project report ΓÇ£VEHICLE DAMAGE ASSESMENT FOR INSURANCE CLAIM(AUTOMOTIVE/INSURANCE)ΓÇ¥ is the Bonafide work of ΓÇ£HARISH P (142223104037), HARISH T N (142223104038), HARISHKUMAR S (142223104039), HARSHAVARDHAN S P (142223104041)ΓÇ¥who carried out the project work under my supervision during the academic year2025-26
+
+
+
+
+
+
+
+SIGNATURESIGNATURE
+
+
+
+MS . A. LALITHA, M.Tech, (Ph.D.,)
+Assistant Professor (Sel.G) Department of CSE
+SRM Valliammai Engineering College, Kattankulathur ΓÇô 603 203.
+Dr . B. VANATHI, M.E., Ph.D.,
+Professor & Head, Department of CSE
+SRM Valliammai Engineering College, Kattankulathur ΓÇô 603 203.
+
+
+
+
+
+Submitted for the University examination held on  at SRM Valliammai Engineering College, Kattankulathur
+
+
+
+
+INTERNAL EXAMINEREXTERNAL EXAMINER
+
+
+
+
+ACKNOWLEDGEMENT
+
+
+We sincerely express our gratitude in depth to our esteemed Founder Chairman & Chancellor Dr.T.R.Paarivendhar, Thiru.Ravi Pachamoothoo Chairman, Mrs. Padmapriya Ravi Vice Chairman, Ms.R.Harini Correspondent, SRM VALLIAMMAI ENGINEERING COLLEGE for the patronage on our welfare rooted in the academic year.
+We express our sincere gratitude to our respected Dr.Chidhambararajan, M.E., Ph.D.,for his constant encouragement, which has been our motivation to strive towards excellence.
+We thank our sincere Principal Dr.M.Murugan, M.E., Ph.D., for his constant encouragement, which has been our motivation to strive towards excellence.
+We also thank our Vice Principal Dr.S.Visalakshi Selvaraj, M.E., Ph.D., for her constant motivation to strive towards excellence.
+We extend our hand of thanks to our Head of the Department,
+Dr.B.Vanathi, M.E., Ph.D., Professor for her unstinted support.
+
+We are thankful to our project coordinator, Ms.A.LALITHA,M.Tech,
+(Ph.D.) Assistant Professor for providing us with the essential facilities.
+
+We also like to thank all Teaching and non-teaching staff members of our department, for their support during the course of the project. We finally thank our friends and family for their support during the course of the project
+ABSTRACT
+This mini project presents an advanced AI-assisted vehicle damage assessment system designed to streamline and enhance the insurance claim process. The system leverages modern image processing techniques and machine learning algorithms to automatically analyze vehicle images submitted during insurance claims. Initially, the input images undergo preprocessing steps such as noise reduction, resizing, and normalization to improve image quality and ensure accurate analysis. Following preprocessing, the system employs trained deep learning models to detect and localize damaged regions in the vehicle. These models are capable of identifying specific vehicle parts (such as bumper, hood, doors, and headlights) and determining whether they are affected. Once the damaged areas are identified, the system classifies the type of damageΓÇösuch as scratches, dents, cracks, or severe structural damageΓÇöusing feature extraction and pattern recognition techniques. Additionally, the severity of the damage is evaluated and categorized into different levels (minor, moderate, or severe), enabling a more precise assessment. To enhance reliability and build trust, the system incorporates a human-in-the-loop mechanism, where insurance experts review, validate, and approve the AI-generated results. This ensures that the final decision maintains both accuracy and accountability while benefiting from the efficiency of automation.
+
+
+
+
+KEYWORDS: Vehicle Damage Assessment, Insurance Claim Processing , Artificial Intelligence (AI), Machine Learning, Image Processing, Computer Vision, YOLOv8 Segmentation, Damage Detection Damage Localization,  Severity Classification, Repair Cost Estimation, Image Preprocessing, Pixel-Level Segmentation Damage Quantification.
+
+ 
+                                                 α«Üα»üα«░α»üα«òα»ìα«òα««α»ì
+α«çα«¿α»ìα«ñ α«Üα«┐α«▒α»ü α«ñα«┐α«ƒα»ìα«ƒα««α»ì, α«òα«╛α«¬α»ìα«¬α»Çα«ƒα»ìα«ƒα»üα«òα»ì α«òα»ïα«░α«┐α«òα»ìα«òα»ê α«Üα»åα«»α«▓α»ìα««α»üα«▒α»êα«»α»ê α«¿α»åα«▒α«┐α«¬α»ìα«¬α«ƒα»üα«ñα»ìα«ñα«╡α»üα««α»ì α««α»çα««α»ìα«¬α«ƒα»üα«ñα»ìα«ñα«╡α»üα««α»ì α«╡α«ƒα«┐α«╡α««α»êα«òα»ìα«òα«¬α»ìα«¬α«ƒα»ìα«ƒ α«Æα«░α»ü α««α»çα««α»ìα«¬α«ƒα»ìα«ƒ α«Üα»åα«»α«▒α»ìα«òα»ê α«¿α»üα«úα»ìα«úα«▒α«┐α«╡α»ü α«ëα«ñα«╡α«┐α«»α»üα«ƒα«⌐α«╛α«⌐ α«╡α«╛α«òα«⌐ α«Üα»çα«ñ α««α«ñα«┐α«¬α»ìα«¬α»Çα«ƒα»ìα«ƒα»ü α«àα««α»êα«¬α»ìα«¬α»ê α««α»üα«⌐α»ìα«╡α»êα«òα»ìα«òα«┐α«▒α«ñα»ü. α«çα«¿α»ìα«ñ α«àα««α»êα«¬α»ìα«¬α»ü, α«òα«╛α«¬α»ìα«¬α»Çα«ƒα»ìα«ƒα»üα«òα»ì α«òα»ïα«░α«┐α«òα»ìα«òα»êα«òα«│α«┐α«⌐α»ì α«¬α»ïα«ñα»ü α«Üα««α«░α»ìα«¬α»ìα«¬α«┐α«òα»ìα«òα«¬α»ìα«¬α«ƒα»üα««α»ì α«╡α«╛α«òα«⌐α«¬α»ì α«¬α«ƒα«Öα»ìα«òα«│α»êα«ñα»ì α«ñα«╛α«⌐α«╛α«òα«╡α»ç α«¬α«òα»üα«¬α»ìα«¬α«╛α«»α»ìα«╡α»ü α«Üα»åα«»α»ìα«», α«¿α«╡α»Çα«⌐ α«¬α«ƒα«Üα»ì α«Üα»åα«»α«▓α«╛α«òα»ìα«ò α«¿α»üα«ƒα»ìα«¬α«Öα»ìα«òα«│α»êα«»α»üα««α»ì α«çα«»α«¿α»ìα«ñα«┐α«░ α«òα«▒α»ìα«▒α«▓α»ì α«╡α«┤α«┐α««α»üα«▒α»êα«òα«│α»êα«»α»üα««α»ì α«¬α«»α«⌐α»ìα«¬α«ƒα»üα«ñα»ìα«ñα»üα«òα«┐α«▒α«ñα»ü. α«ñα»èα«ƒα«òα»ìα«òα«ñα»ìα«ñα«┐α«▓α»ì, α«¬α«ƒα«ñα»ì α«ñα«░α«ñα»ìα«ñα»ê α««α»çα««α»ìα«¬α«ƒα»üα«ñα»ìα«ñα«╡α»üα««α»ì α«ñα»üα«▓α»ìα«▓α«┐α«»α««α«╛α«⌐ α«¬α«òα»üα«¬α»ìα«¬α«╛α«»α»ìα«╡α»ê α«ëα«▒α»üα«ñα«┐ α«Üα»åα«»α»ìα«»α«╡α»üα««α»ì, α«ëα«│α»ìα«│α»Çα«ƒα»ìα«ƒα»üα«¬α»ì α«¬α«ƒα«Öα»ìα«òα«│α»ì α«çα«░α»êα«Üα»ìα«Üα«▓α»ì α«òα»üα«▒α»êα«¬α»ìα«¬α»ü, α«àα«│α«╡α»ü α««α«╛α«▒α»ìα«▒α««α»ì α««α«▒α»ìα«▒α»üα««α»ì α«çα«»α«▓α»ìα«¬α«╛α«òα»ìα«òα««α»ì α«¬α»ïα«⌐α»ìα«▒ α««α»üα«⌐α»ì α«Üα»åα«»α«▓α«╛α«òα»ìα«òα«¬α»ì α«¬α«ƒα«┐α«òα«│α»üα«òα»ìα«òα»ü α«ëα«ƒα»ìα«¬α«ƒα»üα«ñα»ìα«ñα«¬α»ìα«¬α«ƒα»üα«òα«┐α«⌐α»ìα«▒α«⌐. α««α»üα«⌐α»ì α«Üα»åα«»α«▓α«╛α«òα»ìα«òα«ñα»ìα«ñα»êα«ñα»ì α«ñα»èα«ƒα«░α»ìα«¿α»ìα«ñα»ü, α«╡α«╛α«òα«⌐α«ñα»ìα«ñα«┐α«▓α»ì α«Üα»çα«ñα««α«ƒα»êα«¿α»ìα«ñ α«¬α«òα»üα«ñα«┐α«òα«│α»êα«òα»ì α«òα«úα»ìα«ƒα«▒α«┐α«¿α»ìα«ñα»ü α«àα«╡α«▒α»ìα«▒α«┐α«⌐α»ì α«çα«░α»üα«¬α»ìα«¬α«┐α«ƒα«ñα»ìα«ñα»êα«òα»ì α«òα«úα»ìα«ƒα«▒α«┐α«», α«çα«¿α»ìα«ñ α«àα««α»êα«¬α»ìα«¬α»ü α«¬α«»α«┐α«▒α»ìα«Üα«┐ α«¬α»åα«▒α»ìα«▒ α«åα«┤α»ìα«¿α«┐α«▓α»ê α«òα«▒α»ìα«▒α«▓α»ì α««α«╛α«ñα«┐α«░α«┐α«òα«│α»êα«¬α»ì α«¬α«»α«⌐α»ìα«¬α«ƒα»üα«ñα»ìα«ñα»üα«òα«┐α«▒α«ñα»ü. α«çα«¿α»ìα«ñ α««α«╛α«ñα«┐α«░α«┐α«òα«│α»ì, α«╡α«╛α«òα«⌐α«ñα»ìα«ñα«┐α«⌐α»ì α«òα»üα«▒α«┐α«¬α»ìα«¬α«┐α«ƒα»ìα«ƒ α«¬α«╛α«òα«Öα»ìα«òα«│α»ê (α«¬α««α»ìα«¬α«░α»ì, α«╣α»éα«ƒα»ì, α«òα«ñα«╡α»üα«òα«│α»ì α««α«▒α»ìα«▒α»üα««α»ì α««α»üα«òα«¬α»ìα«¬α»ü α«╡α«┐α«│α«òα»ìα«òα»üα«òα«│α»ì α«¬α»ïα«⌐α»ìα«▒α«╡α»ê) α«àα«ƒα»êα«»α«╛α«│α««α»ì α«òα«úα»ìα«ƒα»ü, α«àα«╡α»ê α«¬α«╛α«ñα«┐α«òα»ìα«òα«¬α»ìα«¬α«ƒα»ìα«ƒα»üα«│α»ìα«│α«⌐α«╡α«╛ α«Äα«⌐α»ìα«¬α«ñα»êα«ñα»ì α«ñα»Çα«░α»ìα««α«╛α«⌐α«┐α«òα»ìα«òα»üα««α»ì α«ñα«┐α«▒α«⌐α»ì α«òα»èα«úα»ìα«ƒα«╡α»ê. α«Üα»çα«ñα««α«ƒα»êα«¿α»ìα«ñ α«¬α«òα»üα«ñα«┐α«òα«│α»ì α«àα«ƒα»êα«»α«╛α«│α««α»ì α«òα«╛α«úα«¬α»ìα«¬α«ƒα»ìα«ƒα«╡α»üα«ƒα«⌐α»ì, α«çα«¿α»ìα«ñ α«àα««α»êα«¬α»ìα«¬α»ü α«àα««α»ìα«Üα«¬α»ì α«¬α«┐α«░α«┐α«ñα»ìα«ñα»åα«ƒα»üα«ñα»ìα«ñα«▓α»ì α««α«▒α»ìα«▒α»üα««α»ì α«╡α«ƒα«┐α«╡ α«àα«Öα»ìα«òα»Çα«òα«╛α«░ α«¿α»üα«ƒα»ìα«¬α«Öα»ìα«òα«│α»êα«¬α»ì α«¬α«»α«⌐α»ìα«¬α«ƒα»üα«ñα»ìα«ñα«┐, α«òα»Çα«▒α«▓α»ìα«òα«│α»ì, α«¬α«│α»ìα«│α«Öα»ìα«òα«│α»ì, α«╡α«┐α«░α«┐α«Üα«▓α»ìα«òα«│α»ì α«àα«▓α»ìα«▓α«ñα»ü α«òα«ƒα»üα««α»êα«»α«╛α«⌐ α«òα«ƒα»ìα«ƒα««α»êα«¬α»ìα«¬α»üα«Üα»ì α«Üα»çα«ñα««α»ì α«¬α»ïα«⌐α»ìα«▒ α«Üα»çα«ñα«ñα»ìα«ñα«┐α«⌐α»ì α«╡α«òα»êα«»α»ê α«╡α«òα»êα«¬α»ìα«¬α«ƒα»üα«ñα»ìα«ñα»üα«òα«┐α«▒α«ñα»ü. α««α»çα«▓α»üα««α»ì, α«Üα»çα«ñα«ñα»ìα«ñα«┐α«⌐α»ì α«ñα»Çα«╡α«┐α«░α««α»ì α««α«ñα«┐α«¬α»ìα«¬α«┐α«ƒα«¬α»ìα«¬α«ƒα»ìα«ƒα»ü, α«╡α»åα«╡α»ìα«╡α»çα«▒α»ü α«¿α«┐α«▓α»êα«òα«│α«╛α«ò (α«Üα«┐α«▒α«┐α«», α««α«┐α«ñα««α«╛α«⌐ α«àα«▓α»ìα«▓α«ñα»ü α«òα«ƒα»üα««α»êα«»α«╛α«⌐) α«╡α«òα»êα«¬α»ìα«¬α«ƒα»üα«ñα»ìα«ñα«¬α»ìα«¬α«ƒα»üα«òα«┐α«▒α«ñα»ü, α«çα«ñα»ü α««α«┐α«òα«╡α»üα««α»ì α«ñα»üα«▓α»ìα«▓α«┐α«»α««α«╛α«⌐ α««α«ñα«┐α«¬α»ìα«¬α»Çα«ƒα»ìα«ƒα»êα«Üα»ì α«Üα»åα«»α»ìα«» α«ëα«ñα«╡α»üα«òα«┐α«▒α«ñα»ü. α«¿α««α»ìα«¬α«òα«ñα»ìα«ñα«⌐α»ìα««α»êα«»α»ê α««α»çα««α»ìα«¬α«ƒα»üα«ñα»ìα«ñα«╡α»üα««α»ì α«¿α««α»ìα«¬α«┐α«òα»ìα«òα»êα«»α»ê α«╡α«│α«░α»ìα«òα»ìα«òα«╡α»üα««α»ì, α«çα«¿α»ìα«ñ α«àα««α»êα«¬α»ìα«¬α»ü α«Æα«░α»ü α««α«⌐α«┐α«ñ-α«ëα«│α»ìα«│α»Çα«ƒα»ìα«ƒα»ü α«╡α«┤α«┐α««α»üα«▒α»êα«»α»ê α«ëα«│α»ìα«│α«ƒα«òα»ìα«òα«┐α«»α»üα«│α»ìα«│α«ñα»ü. α«çα«ñα«┐α«▓α»ì, α«òα«╛α«¬α»ìα«¬α»Çα«ƒα»ìα«ƒα»ü α«¿α«┐α«¬α»üα«úα«░α»ìα«òα«│α»ì α«Üα»åα«»α«▒α»ìα«òα»ê α«¿α»üα«úα»ìα«úα«▒α«┐α«╡α«╛α«▓α»ì α«ëα«░α»üα«╡α«╛α«òα»ìα«òα«¬α»ìα«¬α«ƒα»ìα«ƒ α««α»üα«ƒα«┐α«╡α»üα«òα«│α»ê α««α«ñα«┐α«¬α»ìα«¬α«╛α«»α»ìα«╡α»ü α«Üα»åα«»α»ìα«ñα»ü, α«Üα«░α«┐α«¬α«╛α«░α»ìα«ñα»ìα«ñα»ü, α«àα«Öα»ìα«òα»Çα«òα«░α«┐α«òα»ìα«òα«┐α«⌐α»ìα«▒α«⌐α«░α»ì. α«çα«ñα»ü, α«ñα«╛α«⌐α«┐α«»α«òα»ìα«òα«ñα»ìα«ñα«┐α«⌐α»ì α«Üα»åα«»α«▓α»ìα«ñα«┐α«▒α«⌐α«┐α«▓α«┐α«░α»üα«¿α»ìα«ñα»ü α«¬α«»α«⌐α«ƒα»êα«╡α«ñα»ïα«ƒα»ü, α«çα«▒α»üα«ñα«┐ α««α»üα«ƒα«┐α«╡α»ü α«ñα»üα«▓α»ìα«▓α«┐α«»α««α»ì α««α«▒α»ìα«▒α»üα««α»ì α«¬α»èα«▒α»üα«¬α»ìα«¬α»üα«òα»ìα«òα»éα«▒α«▓α»ì α«åα«òα«┐α«» α«çα«░α«úα»ìα«ƒα»êα«»α»üα««α»ì α«¬α«░α«╛α««α«░α«┐α«¬α»ìα«¬α«ñα»ê α«ëα«▒α»üα«ñα«┐ α«Üα»åα«»α»ìα«òα«┐α«▒α«ñα»ü.
+
+α««α»üα«òα»ìα«òα«┐α«» α«╡α«╛α«░α»ìα«ñα»ìα«ñα»êα«òα«│α»ì: α«╡α«╛α«òα«⌐α«Üα»ì α«Üα»çα«ñ α««α«ñα«┐α«¬α»ìα«¬α»Çα«ƒα»ü, α«òα«╛α«¬α»ìα«¬α»Çα«ƒα»ìα«ƒα»üα«òα»ì α«òα»ïα«░α«┐α«òα»ìα«òα»ê α«Üα»åα«»α«▓α«╛α«òα»ìα«òα««α»ì, α«Üα»åα«»α«▒α»ìα«òα»ê α«¿α»üα«úα»ìα«úα«▒α«┐α«╡α»ü (AI), α«çα«»α«¿α»ìα«ñα«┐α«░α«òα»ì α«òα«▒α»ìα«▒α«▓α»ì, α«¬α«ƒα«Üα»ì α«Üα»åα«»α«▓α«╛α«òα»ìα«òα««α»ì, α«òα«úα«┐α«⌐α«┐α«¬α»ì α«¬α«╛α«░α»ìα«╡α»ê, YOLOv8 α«¬α«┐α«░α«┐α«ñα»ìα«ñα«▓α»ì, α«Üα»çα«ñα«ñα»ìα«ñα»êα«òα»ì α«òα«úα»ìα«ƒα«▒α«┐α«ñα«▓α»ì, α«Üα»çα«ñα«ñα»ìα«ñα«┐α«⌐α»ì α«çα«░α»üα«¬α»ìα«¬α«┐α«ƒα«ñα»ìα«ñα»êα«òα»ì α«òα«úα»ìα«ƒα«▒α«┐α«ñα«▓α»ì, α«ñα»Çα«╡α«┐α«░ α«╡α«òα»êα«¬α»ìα«¬α«╛α«ƒα»ü, α«¬α«┤α»üα«ñα»üα«¬α«╛α«░α»ìα«¬α»ìα«¬α»üα«Üα»ì α«Üα»åα«▓α«╡α»ü α««α«ñα«┐α«¬α»ìα«¬α»Çα«ƒα»ü, α«¬α«ƒ α««α»üα«⌐α»ìα«Üα»åα«»α«▓α«╛α«òα»ìα«òα««α»ì, α«¬α«┐α«òα»ìα«Üα«▓α»ì-α«¿α«┐α«▓α»ê α«¬α«┐α«░α«┐α«ñα»ìα«ñα«▓α»ì, α«Üα»çα«ñα«ñα»ìα«ñα«┐α«⌐α»ì α«àα«│α«╡α»êα«òα»ì α«òα«úα»ìα«ƒα«▒α«┐α«ñα«▓α»ì.
+
+
+
+
+
+
+
+
+
+
+TABLE OF CONTENTS
+S.NOTITLEPAGE.NO
+INTRODUCTION
+PROJECT INTRODUCTION1
+PROBLEM STATEMENT2
+OVERVIEW OF THE PROJECT3
+OBJECTIVES4
+LITERATURE SURVEY5
+METHODOLOGY
+METHODOLOGY10
+SYSTEM REQUIREMENTS14
+SYSTEM DESIGN
+SYSTEM ARCHITECTURE15
+FLOW DIAGRAM16
+USECASE DIAGRAM17
+SEQUENCE DIAGRAM18
+ACTIVITY DIAGRAM19
+IMPLEMENTATION AND RESULTS
+SOURCE CODE20
+OUTPUT29
+CONCLUSION AND FUTURE SCOPE 32
+CONCLUSION31
+FUTURE SCOPE
+REFERENCES
+SDG CERTIFICATE
+
+INTRODUCTION
+PROJECT  INTRODUCTION
+The rapid growth of the automobile industry has led to a significant increase in the number of vehicles on the road, which in turn has resulted in a rise in road accidents and vehicle damage incidents. As a consequence, the demand for efficient and accurate vehicle damage assessment systems has become increasingly important, particularly in the insurance sector. Traditional methods of vehicle damage assessment rely heavily on manual inspection by surveyors, which is often time-consuming, labor-intensive, and prone to human error and inconsistency. With advancements in Artificial Intelligence (AI) and Machine Learning (ML), there is a growing opportunity to automate and enhance the process of vehicle damage evaluation. Image processing and deep learning techniques have shown great potential in analyzing visual data and extracting meaningful insights, making them highly suitable for applications in damage detection and classification.
+This project, titled ΓÇ£Vehicle Damage Assessment for Insurance ClaimΓÇ¥, aims to develop an intelligent system that automates the process of analyzing vehicle damage using AI-based techniques. The system processes images of damaged vehicles, detects affected areas, classifies the type of damage, and determines the severity level. Based on this analysis, it generates a structured report along with an estimated repair cost, thereby streamlining the insurance claim process.
+A key feature of the proposed system is the integration of a human-in-the-loop approach, where insurance experts review and validate the AI-generated results. This ensures reliability, accuracy, and fairness in decision-making while maintaining the efficiency of automation. By combining the strengths of artificial intelligence with human expertise, the system addresses the limitations of traditional methods and enhances the overall claim processing workflow. The proposed solution not only reduces processing time and operational costs but also improves consistency, transparency, and customer satisfaction in insurance claim management. It represents a step forward in leveraging modern technology to transform conventional practices into smart, scalable, and efficient systems.
+
+
+
+ PROBLEM STATEMENT
+
+The current insurance claim process for vehicle damage relies heavily on manual inspection by surveyors, making it slow, costly, and prone to subjective judgment. Customers often face long waiting times for claim approval, while insurance companies struggle with high operational workloads and inconsistent damage evaluation.
+
+To overcome these challenges, this project aims to develop an AI-based vehicle damage assessment system that automatically analyzes images submitted during insurance claims. The system preprocesses vehicle images, identifies damaged parts using object detection techniques, classifies the type of damage, and determines its severity level using machine learning models. Based on these results, a structured damage report and estimated repair cost are generated.
+
+However, since real-world damage scenarios can be complex and AI predictions may occasionally be uncertain, the system incorporates a human-in-the-loop approach. Insurance experts review AI-generated assessments, correct errors if necessary, and approve the final claim decision. This combination of artificial intelligence and human expertise ensures faster processing while maintaining accuracy, fairness, and customer trust.
+
+The goal of this mini project is to create an intelligent, reliable, and transparent vehicle damage assessment solution that improves efficiency in insurance claim processing while preserving human judgment where critical decisions are required.
+
+
+
+
+
+
+
+
+ OVERVIEW OF THE PROJECT
+The proposed project is an intelligent vehicle damage assessment system designed for insurance claim automation. The primary objective of this project is to design and develop an intelligent vehicle damage assessment system that automates the insurance claim evaluation process using Artificial Intelligence, Computer Vision, and deep learning techniques. The proposed system reduces dependency on manual inspection by automatically detecting and analyzing vehicle damages from uploaded images. Through image preprocessing techniques such as resizing, normalization, and enhancement, the quality of input images is improved, leading to better detection accuracy and reliable analysis.
+To develop an AI-based vehicle damage detection and segmentation system using YOLOv8 for identifying damaged vehicle parts such as dents, scratches, cracks, and broken components from uploaded images. 
+To automate the insurance claim assessment process by estimating damage severity levels and generating repair cost reports, thereby reducing processing time, improving operational efficiency, and ensuring transparency in claim settlement. 
+To integrate a Human-in-the-Loop (HITL) mechanism where insurance experts review uncertain predictions and validate the final results, ensuring fairness, reliability, and improved decision-making accuracy. 
+The project also aims to enhance customer experience by providing faster claim responses and reducing delays in insurance processing. Automated report generation helps maintain consistency in claim evaluation while minimizing human errors and workload for insurance companies. The system is designed to provide real-time analysis and scalable performance, making it suitable for large-scale deployment in modern insurance industries.
+Furthermore, the proposed solution supports digital transformation in the insurance sector by combining AI automation with human expertise. The integration of advanced deep learning models improves the accuracy of damage detection and severity estimation, enabling insurance providers to make quick and informed decisions. 
+1.4 OBJECTIVES
+The primary objective of this project is to design and develop an intelligent vehicle damage assessment system that automates the insurance claim evaluation process using Artificial Intelligence, Computer Vision, and deep learning techniques. The proposed system aims to reduce the dependency on manual inspection methods by enabling automatic detection and analysis of vehicle damages from uploaded images. The system improves the efficiency, speed, and accuracy of insurance claim processing while ensuring reliable and transparent decision-making.
+The major objectives of the project are:
+To develop an automated vehicle damage detection system using AI and deep learning techniques. 
+To preprocess vehicle images using resizing, normalization, and enhancement methods for better detection accuracy. 
+To detect and localize damaged vehicle parts from uploaded images. 
+To classify different damage types such as dents, scratches, cracks, and broken components. 
+To estimate the severity level of damages as minor, moderate, or severe. 
+To generate structured damage assessment reports along with estimated repair costs. 
+To create a smart, reliable, and cost-effective vehicle damage assessment framework for modern insurance applications. 
+The proposed system combines the power of Artificial Intelligence with human expertise to improve the overall reliability of the insurance claim process. By automating damage detection and report generation, the system reduces operational costs and improves claim settlement speed. In addition, the integration of advanced deep learning models such as YOLOv8 enhances the accuracy of damage identification and severity estimation. The project ultimately aims to provide a scalable and efficient solution that benefits insurance companies, vehicle owners, and claim processing agencies.
+
+LITERATURE SURVEY
+[1] Dimitrios Mallios, Li Xiaofei, Niall McLaughlin, Jesus Martinez Del Rincon, Clare Galbraith, and Rory Garland ΓÇôΓÇ£Vehicle Damage Severity Estimation for Insurance Operations Using In-The-Wild Mobile ImagesΓÇ¥
+
+PROBLEM STATEMENT
+Traditional vehicle damage assessment in insurance companies mainly depends on manual inspection performed by claim adjusters. This process is time-consuming, expensive, inconsistent, and often affected by human errors. Customers are required to wait for long durations before receiving claim approval and repair estimates. Existing automated systems focus only on damage detection and fail to provide a complete end-to-end framework for severity estimation and repair cost prediction.
+PROPOSED SOLUTION
+The authors proposed a complete AI-driven vehicle damage assessment framework using mobile images captured in real-world environments. The framework uses deep learning models for detecting damaged vehicle parts and estimating the severity of the damage. YOLO-based models are used for rapid object detection, while Mask R-CNN performs accurate segmentation of damaged regions. Feature fusion techniques combine multiple extracted image features to improve prediction accuracy.
+In addition, the system applies the XGBoost machine learning algorithm to estimate repair costs based on the detected damage severity and affected vehicle components. The proposed model can process images captured from different angles and lighting conditions, making it suitable for real-world insurance applications.
+
+[2] Qinghui Zhang, Xianing Chang, and Shanfeng Bian ΓÇôΓÇ£Vehicle-Damage-Detection Segmentation Algorithm Based on Improved Mask RCNNΓÇ¥
+Problem Statement
+Traditional vehicle damage detection methods are inefficient and highly dependent on manual inspection. Existing automated damage detection systems often suffer from low segmentation accuracy and poor detection performance in complex scenarios. Small damaged areas such as scratches and cracks are difficult to detect accurately due to variations in lighting conditions, vehicle colors, and image backgrounds.
+Proposed Solution
+The authors proposed an improved Mask R-CNN-based segmentation algorithm for vehicle damage detection. The system uses transfer learning to improve model performance with limited training data. A ResNet-50 backbone network is integrated with a Feature Pyramid Network (FPN) to improve feature extraction at different image scales.
+The improved Mask R-CNN model enhances segmentation accuracy by identifying damaged regions more precisely. The framework can detect multiple damage categories including scratches, dents, broken lights, and cracks. The proposed approach reduces false detections and improves overall segmentation quality.
+
+[3] Yuntao Ma, Hiva Ghanbari, Tianyuan Huang, Andrew Ng, Ram Rajagopal, and others. ΓÇôΓÇ£A System for Automated Vehicle Damage Localization and Severity Estimation Using Deep LearningΓÇ¥
+Problem Statement
+Many existing automated vehicle damage assessment systems fail to accurately localize damaged regions across multiple image views. Vehicle images captured from different angles often create inconsistencies in detection and severity estimation. In addition, conventional methods struggle to provide accurate damage localization in complex real-world environments.
+Proposed Solution
+The authors proposed a modular deep learning framework for automated vehicle damage localization and severity estimation. The framework uses EfficientNet-B5 for feature extraction and DeepLabV3+ for semantic segmentation of damaged vehicle parts.
+The proposed system can analyze vehicle images captured from multiple viewpoints and accurately localize damaged regions. Semantic segmentation techniques help in identifying the exact boundaries of damaged areas. The framework also estimates damage severity levels based on the size and extent of the detected damages.
+
+
+
+
+
+2.METHODOLOGY
+   2.1.METHODOLOGY
+The proposed intelligent vehicle damage assessment system follows a systematic methodology to automate the insurance claim evaluation process using Artificial Intelligence, Computer Vision, and deep learning techniques. The methodology consists of multiple stages starting from image acquisition to final report generation. Each stage plays an important role in improving the accuracy, efficiency, and reliability of the overall system.
+
+1.Image Acquisition
+The first stage of the methodology is image acquisition. In this phase, vehicle images are collected either through mobile phone cameras, surveillance systems, or publicly available datasets. Users upload images of damaged vehicles through the system interface for analysis. The images may include front view, side view, rear view, or multiple-angle photographs to capture different damaged regions clearly.
+The quality of the captured images significantly affects the performance of the damage detection model. Therefore, images with sufficient lighting, proper focus, and appropriate resolution are preferred. Public datasets containing labeled vehicle damage images are also used for training and testing the deep learning model. The collected images form the input for the next preprocessing stage.
+
+2.Image Preprocessing
+Image preprocessing is performed to improve image quality and prepare the images for deep learning model analysis. Raw images may contain noise, inconsistent brightness, varying resolutions, and unnecessary background information that can reduce detection accuracy. Therefore, preprocessing techniques are applied before feeding the images into the model.
+The preprocessing stage includes:
+Image resizing to a fixed dimension suitable for model input. 
+Image normalization to standardize pixel intensity values. 
+Noise reduction and enhancement techniques to improve image clarity. 
+Data augmentation techniques such as rotation, flipping, and scaling to improve model generalization. 
+These preprocessing operations ensure that all images are consistent in format and quality, which improves the overall performance and accuracy of the damage detection system.
+
+3.Damage Detection
+In this stage, the preprocessed vehicle images are analyzed using the YOLOv8 segmentation model. YOLOv8 is a deep learning-based object detection algorithm capable of detecting and localizing damaged regions in real time with high accuracy.
+The model identifies damaged vehicle parts such as:
+Dents 
+Scratches 
+Cracks 
+Broken components 
+Bumper damages 
+Glass damages 
+Bounding boxes and segmentation masks are generated around the detected damage regions. The segmentation capability of YOLOv8 helps in accurately identifying the exact shape and boundary of the damaged area. This stage forms the core of the automated vehicle damage assessment system.
+
+4.Damage Quantification
+After detecting damaged regions, the system calculates the extent of the damage using segmentation masks generated by the model. Damage quantification measures the percentage of the damaged area relative to the total vehicle surface area.
+The segmentation masks help determine:
+Total damaged area 
+Number of damaged parts 
+Area occupied by each damage type 
+Percentage of damage severity 
+Mathematical calculations and pixel-level analysis are used to estimate the size of the damaged regions accurately. This information is essential for determining the severity level and estimating repair costs.
+
+5.Severity Classification
+The quantified damage information is used to classify the severity level of the vehicle damage. The system categorizes the damage into three major classes:
+Minor Damage
+Small scratches, paint damage, or light dents that require minimal repair work.
+Moderate Damage
+Visible dents, cracked parts, or medium-level body damage that may require component replacement or repair.
+Severe Damage
+Major structural damage, broken components, or extensive vehicle destruction requiring costly repairs.
+Severity classification is performed using predefined thresholds and machine learning-based analysis. This classification helps insurance companies make quick and consistent claim decisions.
+6.Cost Estimation
+Once the damage severity is determined, the system estimates the repair cost based on the damaged vehicle parts and severity level. Cost estimation is an important stage in insurance claim processing because it helps determine the compensation amount.
+The repair cost estimation process considers:
+Type of damaged component 
+Severity level of the damage 
+Area affected by the damage 
+Estimated labor cost 
+Replacement cost of damaged parts 
+Machine learning models and predefined repair cost databases are used to generate approximate repair expenses. The automated cost estimation process reduces manual calculations and speeds up insurance claim settlement.
+7.Human Verification
+Although deep learning models provide high accuracy, certain cases may contain uncertain or ambiguous predictions due to poor image quality, hidden damages, or complex vehicle conditions. Therefore, the system integrates a Human-in-the-Loop (HITL) verification mechanism.
+In this stage:
+Insurance experts review uncertain predictions. 
+Detected damage regions and severity estimates are validated manually. 
+Experts can modify incorrect predictions if necessary. 
+Final approval is provided before claim settlement. 
+This combination of AI automation and human expertise improves reliability, fairness, and trust in the insurance claim process while minimizing false predictions.
+
+8.Final Report Generation
+The final stage of the methodology involves generating a structured damage assessment report. The report contains complete information regarding the detected vehicle damages and estimated repair costs.
+The generated report includes:
+Vehicle image details 
+Detected damage locations 
+Damage type classification 
+Severity level 
+Estimated repair cost 
+Expert verification status 
+Claim assessment summary 
+The final report is generated automatically in a structured format that can be used by insurance companies for claim approval and documentation purposes. Automated report generation improves transparency, reduces paperwork, and accelerates claim processing.
+
+
+2.2 SYSTEM REQUIREMENTS 
+       2.2.1 HARDWARE REQUIREMENTS
+The system requirements specify the hardware and software components needed for the successful development and execution of the proposed intelligent vehicle damage assessment system. Since the project uses Artificial Intelligence, Computer Vision, and deep learning techniques, the system must support image processing, model training, segmentation, and report generation efficiently. The requirements are divided into hardware requirements and software requirements.
+Processor: Intel i5 or above 
+RAM: 8 GB minimum 
+Storage: 256 GB 
+GPU: NVIDIA GPU (optional for training)
+
+Software Requirements
+The software requirements include the operating system, programming languages, frameworks, libraries, and development tools necessary for implementing the project.
+  Operating System: Windows/Linux 
+  Programming Language: Python 
+  Frameworks: YOLOv8, OpenCV, TensorFlow/PyTorch 
+  IDE: VS Code / Jupyter Notebook
+
+
+
+
+
+3.SYSTEM DESIGN 
+    3.1 SYSTEM ARCHITECTURE
+The system architecture of the proposed intelligent vehicle damage assessment system is designed to automate the insurance claim evaluation process using Artificial Intelligence, Computer Vision, and deep learning techniques. The architecture consists of multiple interconnected modules that work together to detect vehicle damages, estimate severity levels, calculate repair costs, and generate structured insurance reports. Each module performs a specific task in the workflow, ensuring accurate and efficient claim assessment.
+The first component of the architecture is the Image Input Module, where vehicle images are uploaded by users through mobile devices, cameras, or datasets. The uploaded images may contain damages such as dents, scratches, cracks, or broken components captured from different angles. These images are then forwarded to the Preprocessing Module, which prepares the images for deep learning analysis. In this module, image preprocessing techniques such as resizing, normalization, enhancement, and noise reduction are applied to improve image quality and maintain consistency. Proper preprocessing increases the performance and accuracy of the detection model.
+After preprocessing, the images are passed to the YOLOv8 Segmentation Module, which acts as the core component of the system. The YOLOv8 model detects and localizes damaged vehicle parts using deep learning and segmentation techniques. The model generates segmentation masks and bounding boxes around the damaged regions, enabling accurate identification of dents, scratches, cracks, and other defects. The detected damage information is then processed by the Damage Analysis Module, where the size, affected area, and percentage of damage are calculated. Based on this analysis, the Severity Classification Module categorizes the damage into minor, moderate, or severe levels using predefined thresholds and machine learning-based evaluation methods.
+The next stage of the architecture includes the Cost Estimation Module, which estimates the repair cost depending on the severity level and affected vehicle components. The system uses predefined repair cost databases and damage analysis results to generate approximate repair expenses automatically. 
+To improve reliability and reduce incorrect predictions, the architecture integrates a Human Verification Module where insurance experts review uncertain or complex cases before final approval. Finally, the Report Generation Module creates a structured damage assessment report containing detected damages, severity levels, repair cost estimates, and verification details. The generated report helps insurance companies process claims faster, improve transparency, and enhance customer satisfaction through efficient claim settlement services.
+
+
+3.2 FLOW DIAGRAM
+The flow diagram of the proposed intelligent vehicle damage assessment system illustrates the complete workflow involved in automating the insurance claim evaluation process using Artificial Intelligence and Computer Vision techniques. These images are then passed to the preprocessing module, where operations such as resizing, normalization, noise reduction, and image enhancement are performed to improve image quality and prepare the data for deep learning analysis. Proper preprocessing helps increase the accuracy and efficiency of the detection model.
+After preprocessing, the images are provided as input to the YOLOv8 segmentation module, which detects and localizes damaged vehicle parts such as dents, scratches, cracks, and broken components. The model generates segmentation masks and bounding boxes around the damaged regions for accurate analysis. The detected damages are further processed in the damage analysis module, where the size and percentage of the damaged area are calculated. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+3.3 USECASE DIAGRAM
+The use case diagram of the Vehicle Damage Assessment System illustrates the interaction between the customer, the AI-based assessment system, and the insurance surveyor. Initially, the customer uploads an image of the damaged vehicle through the application. The system preprocesses the image by resizing and normalizing it to improve detection accuracy. After preprocessing, the YOLOv8 segmentation model automatically detects damaged regions such as dents, scratches, and cracks. The system then analyzes the extent of damage, estimates the severity level, and calculates the approximate repair cost. A detailed damage report with highlighted damaged areas is generated and displayed. Finally, the insurance surveyor verifies the AI-generated assessment and makes the final decision to approve or reject the insurance claim. This workflow reduces manual effort, speeds up claim processing, and improves consistency and accuracy in vehicle damage evaluation.
+
+
+3.4 SEQUENCE DIAGRAM
+The sequence diagram illustrates the step-by-step interaction between the customer, system modules, YOLOv8 model, and insurance surveyor during the vehicle damage assessment process. Initially, the customer uploads a damaged vehicle image to the system. The system forwards the image to the preprocessing module, where operations such as resizing and normalization are performed to improve image quality and maintain consistent input dimensions. After preprocessing, the image is passed to the YOLOv8 segmentation model, which detects damaged regions and generates segmentation masks for accurate damage localization. Once the damaged areas are identified, the system calculates the damage percentage and determines the severity level of the damage. Based on the severity and affected regions, the repair cost estimation module computes the approximate repair cost. The system then generates a final damage assessment report containing detected damage details, severity classification, highlighted damage areas, and estimated repair cost. This report is displayed to the customer for review.
+
+
+3.5 ACTIVITY DIAGRAM
+The activity diagram represents the complete workflow of the AI-based vehicle damage assessment system for insurance claim processing. The process begins when the customer uploads an image of the damaged vehicle into the system. The uploaded image is then preprocessed through resizing, normalization, and enhancement operations to improve image quality and ensure consistent input for the deep learning model. After preprocessing, the YOLOv8 segmentation model analyzes the image and detects damaged regions such as dents, scratches, and cracks.
+Once the damage regions are identified, segmentation masks are generated to accurately localize the damaged areas. The system then calculates the percentage of damaged pixels and determines the severity level of the damage as minor, moderate, or severe. After report generation, the assessment is forwarded to an insurance expert or surveyor for human verification. If the assessment is correct, the insurance claim is approved; otherwise, the claim may be rejected or re-evaluated. The activity diagram demonstrates how artificial intelligence and human expertise work together to achieve faster, more reliable, and transparent insurance claim processing.
+
+
+4.IMPLEMENTATION AND RESULTS
+4.1 SOURCE CODE
+import io
+import os
+import uuid
+import datetime
+import asyncio
+import time
+import base64
+from collections import defaultdict
+from typing import Optional, List
+from concurrent.futures import ThreadPoolExecutor
+
+import cv2
+import numpy as np
+import uvicorn
+from fastapi import FastAPI, File, UploadFile, HTTPException, Request, Depends
+from fastapi.responses import FileResponse, JSONResponse
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi.middleware.gzip import GZipMiddleware
+
+import damage_analyzer
+import cost_estimator
+import insurance_advisor
+import report_generator
+import fraud_detector
+import multi_angle_validator
+from config import MODEL_VERSION
+
+# ΓöÇΓöÇ App Setup ΓöÇΓöÇ
+app = FastAPI(
+┬á ┬á title ┬á ┬á ┬á = "AutoGuard API",
+┬á ┬á description = "AI Vehicle Damage Assessment ΓÇö IRDAI Compliant",
+┬á ┬á version ┬á ┬á = MODEL_VERSION,
+┬á ┬á docs_url ┬á ┬á= "/docs",
+┬á ┬á redoc_url ┬á = "/redoc",
+)
+app.add_middleware(
+┬á ┬á CORSMiddleware,
+┬á ┬á allow_origins ┬á= ["*"],
+┬á ┬á allow_methods ┬á= ["GET", "POST"],
+┬á ┬á allow_headers ┬á= ["*"],
+)
+app.add_middleware(GZipMiddleware, minimum_size=500)
+
+# ΓöÇΓöÇ In-Memory Stores 
+# FIXED v4.1: PDF store now stores (bytes, timestamp) tuples.
+# Auto-eviction on every write: PDFs expire after PDF_TTL_SECONDS.
+PDF_TTL_SECONDS = 3600 ┬á ┬á ┬á # 1 hour
+JOB_TTL_SECONDS = 7200 ┬á ┬á ┬á # 2 hours
+
+_pdf_store: ┬ádict[str, tuple[bytes, float]] = {} ┬á# id ΓåÆ (pdf_bytes, ts)
+_job_store: ┬ádict[str, dict] ┬á ┬á ┬á ┬á ┬á ┬á ┬á = {} ┬á # job_id ΓåÆ job_state
+_cache: ┬á ┬á ┬ádict[str, dict] ┬á ┬á ┬á ┬á ┬á ┬á ┬á = {} ┬á # sha256 ΓåÆ result
+_rate_log: ┬á dict[str, list] ┬á ┬á ┬á ┬á ┬á ┬á ┬á = defaultdict(list)
+_stats = {
+┬á ┬á "total_requests": ┬á 0,
+┬á ┬á "total_async_jobs": 0,
+┬á ┬á "start_time": ┬á ┬á ┬á datetime.datetime.now(datetime.timezone.utc).isoformat(),
+}
+
+os.makedirs("reports", exist_ok=True)
+
+# ΓöÇΓöÇ PDF TTL Helpers (FIXED: memory leak prevention) ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+def _store_pdf(report_id: str, pdf_bytes: bytes):
+┬á ┬á """Store PDF with timestamp. Evict expired entries on every write."""
+┬á ┬á now = time.monotonic()
+┬á ┬á _pdf_store[report_id] = (pdf_bytes, now)
+┬á ┬á # Evict expired PDFs
+┬á ┬á expired = [k for k, (_, ts) in _pdf_store.items() if now - ts > PDF_TTL_SECONDS]
+┬á ┬á for k in expired:
+┬á ┬á ┬á ┬á del _pdf_store[k]
+
+def _get_pdf(report_id: str) -> Optional[bytes]:
+┬á ┬á """Retrieve PDF bytes if not expired."""
+┬á ┬á entry = _pdf_store.get(report_id)
+┬á ┬á if entry is None:
+┬á ┬á ┬á ┬á return None
+┬á ┬á pdf_bytes, ts = entry
+┬á ┬á if time.monotonic() - ts > PDF_TTL_SECONDS:
+┬á ┬á ┬á ┬á del _pdf_store[report_id]
+┬á ┬á ┬á ┬á return None
+┬á ┬á return pdf_bytes
+
+def _evict_old_jobs():
+┬á ┬á """Remove completed/errored jobs older than JOB_TTL_SECONDS."""
+┬á ┬á now = time.monotonic()
+┬á ┬á to_del = []
+┬á ┬á for jid, job in _job_store.items():
+┬á ┬á ┬á ┬á if job["status"] in ("done", "error"):
+┬á ┬á ┬á ┬á ┬á ┬á ts = job.get("_ts", now)
+┬á ┬á ┬á ┬á ┬á ┬á if now - ts > JOB_TTL_SECONDS:
+┬á ┬á ┬á ┬á ┬á ┬á ┬á ┬á to_del.append(jid)
+┬á ┬á for jid in to_del:
+┬á ┬á ┬á ┬á del _job_store[jid]
+
+# ΓöÇΓöÇ Rate Limiting Helper 
+def _check_rate_limit(ip: str, max_per_minute: int = 10):
+┬á ┬á """Sliding-window rate limiter: max 10 requests per minute per IP."""
+┬á ┬á now ┬á = time.monotonic()
+┬á ┬á times = _rate_log[ip]
+┬á ┬á # Remove timestamps older than 60 seconds
+┬á ┬á _rate_log[ip] = [t for t in times if now - t < 60]
+┬á ┬á if len(_rate_log[ip]) >= max_per_minute:
+┬á ┬á ┬á ┬á raise HTTPException(
+┬á ┬á ┬á ┬á ┬á ┬á status_code=429,
+┬á ┬á ┬á ┬á ┬á ┬á detail=f"Rate limit exceeded ({max_per_minute} req/min). Please wait.")
+┬á ┬á _rate_log[ip].append(now)
+
+# ΓöÇΓöÇ Image Hash Helper ΓöÇΓöÇ
+def _img_hash(data: bytes) -> str:
+┬á ┬á import hashlib
+┬á ┬á return hashlib.sha256(data).hexdigest()[:16]
+
+# ΓöÇΓöÇ Core Pipeline ΓöÇ
+def _run_pipeline(bgr: np.ndarray, filename: str) -> dict:
+┬á ┬á """Run the full AutoGuard AI pipeline and return a serializable result."""
+┬á ┬á analysis = damage_analyzer.analyze(bgr)
+┬á ┬á cost ┬á ┬á = cost_estimator.estimate(
+┬á ┬á ┬á ┬á analysis["damage_regions"],
+┬á ┬á ┬á ┬á analysis["severity"],
+┬á ┬á ┬á ┬á analysis["damage_pct"],
+┬á ┬á )
+┬á ┬á advisory = insurance_advisor.generate(
+┬á ┬á ┬á ┬á analysis["severity"],
+┬á ┬á ┬á ┬á analysis["damage_regions"],
+┬á ┬á ┬á ┬á analysis["damage_pct"],
+┬á ┬á )
+┬á ┬á pdf_bytes = report_generator.generate_pdf(
+┬á ┬á ┬á ┬á analysis ┬á = analysis,
+┬á ┬á ┬á ┬á cost_data ┬á= cost,
+┬á ┬á ┬á ┬á advisory ┬á = advisory,
+┬á ┬á ┬á ┬á image_name = filename,
+┬á ┬á )
+┬á ┬á report_id = str(uuid.uuid4())
+┬á ┬á _store_pdf(report_id, pdf_bytes) ┬á # FIXED: use TTL-aware store
+
+┬á ┬á # Encode annotated image as base64
+┬á ┬á _, buf = cv2.imencode(".jpg", analysis["annotated_bgr"],
+┬á ┬á ┬á ┬á ┬á ┬á ┬á ┬á ┬á ┬á ┬á ┬á ┬á[cv2.IMWRITE_JPEG_QUALITY, 88])
+┬á ┬á annotated_b64 = base64.b64encode(buf.tobytes()).decode()
+
+┬á ┬á # Damage regions ΓÇö serializable format (with confidence field v4.0)
+┬á ┬á regions_out = [
+┬á ┬á ┬á ┬á {
+┬á ┬á ┬á ┬á ┬á ┬á "index": ┬á ┬á ┬á ┬á ┬á r["index"],
+┬á ┬á ┬á ┬á ┬á ┬á "damage_type": ┬á ┬á r["damage_type"],
+┬á ┬á ┬á ┬á ┬á ┬á "part_name": ┬á ┬á ┬á r["part_name"],
+┬á ┬á ┬á ┬á ┬á ┬á "area_px": ┬á ┬á ┬á ┬á r["area_px"],
+┬á ┬á ┬á ┬á ┬á ┬á "area_pct": ┬á ┬á ┬á ┬áround(r["area_pct"], 2),
+┬á ┬á ┬á ┬á ┬á ┬á "region_severity": r["region_severity"],
+┬á ┬á ┬á ┬á ┬á ┬á "confidence": ┬á ┬á ┬ár.get("confidence", 0.75),
+┬á ┬á ┬á ┬á ┬á ┬á "bbox": ┬á ┬á ┬á ┬á ┬á ┬álist(r.get("bbox", [])),
+┬á ┬á ┬á ┬á }
+┬á ┬á ┬á ┬á for r in analysis["damage_regions"]
+┬á ┬á ]
+
+┬á ┬á line_items_out = [
+┬á ┬á ┬á ┬á {
+┬á ┬á ┬á ┬á ┬á ┬á "part_name": ┬á it["part_name"],
+┬á ┬á ┬á ┬á ┬á ┬á "parts_cost": ┬áit["parts_cost"],
+┬á ┬á ┬á ┬á ┬á ┬á "labour_cost": it["labour_cost"],
+┬á ┬á ┬á ┬á ┬á ┬á "subtotal": ┬á ┬áit["subtotal"],
+┬á ┬á ┬á ┬á }
+┬á ┬á ┬á ┬á for it in cost["line_items"]
+┬á ┬á ]
+
+┬á ┬á return {
+┬á ┬á ┬á ┬á "report_id": ┬á ┬á ┬áreport_id,
+┬á ┬á ┬á ┬á "timestamp": ┬á ┬á ┬ádatetime.datetime.now().isoformat(),
+┬á ┬á ┬á ┬á "model_version": ┬áMODEL_VERSION,
+┬á ┬á ┬á ┬á "severity": ┬á ┬á ┬á analysis["severity"],
+┬á ┬á ┬á ┬á "severity_label": analysis["severity_label"],
+┬á ┬á ┬á ┬á "severity_hex": ┬á analysis["severity_hex"],
+┬á ┬á ┬á ┬á "weighted_score": analysis.get("weighted_score", 0.0),
+┬á ┬á ┬á ┬á "damage_pct": ┬á ┬á round(analysis["damage_pct"], 2),
+┬á ┬á ┬á ┬á "damage_count": ┬á analysis["damage_count"],
+┬á ┬á ┬á ┬á "damage_types": ┬á analysis.get("damage_types", {}),
+┬á ┬á ┬á ┬á "damage_regions": regions_out,
+┬á ┬á ┬á ┬á "cost": {
+┬á ┬á ┬á ┬á ┬á ┬á "total_cost": ┬á cost["total_cost"],
+┬á ┬á ┬á ┬á ┬á ┬á "parts_total": ┬ácost.get("parts_total", 0),
+┬á ┬á ┬á ┬á ┬á ┬á "labour_total": cost.get("labour_total", 0),
+┬á ┬á ┬á ┬á ┬á ┬á "gst_amount": ┬á cost["gst_amount"],
+┬á ┬á ┬á ┬á ┬á ┬á "currency": ┬á ┬á "INR",
+┬á ┬á ┬á ┬á ┬á ┬á "line_items": ┬á line_items_out,
+┬á ┬á ┬á ┬á },
+┬á ┬á ┬á ┬á "advisory": {
+┬á ┬á ┬á ┬á ┬á ┬á "full_text": ┬á ┬áadvisory["full_text"],
+┬á ┬á ┬á ┬á ┬á ┬á "fir_required": advisory.get("fir_required", False),
+┬á ┬á ┬á ┬á ┬á ┬á "ncb_impact": ┬á advisory.get("ncb_impact", ""),
+┬á ┬á ┬á ┬á ┬á ┬á "documents": ┬á ┬áadvisory.get("documents", []),
+┬á ┬á ┬á ┬á },
+┬á ┬á ┬á ┬á "annotated_image_b64": annotated_b64,
+┬á ┬á }
+
+# ΓöÇΓöÇ Endpoints ΓöÇ
+
+@app.get("/health")
+def health():
+┬á ┬á """Health check ΓÇö returns API and model status."""
+┬á ┬á return {
+┬á ┬á ┬á ┬á "status": ┬á ┬á ┬á ┬á"ok",
+┬á ┬á ┬á ┬á "service": ┬á ┬á ┬á f"AutoGuard API v{MODEL_VERSION}",
+┬á ┬á ┬á ┬á "model_version": MODEL_VERSION,
+┬á ┬á ┬á ┬á "timestamp": ┬á ┬á datetime.datetime.utcnow().isoformat(),
+┬á ┬á ┬á ┬á "pdf_cache_size": len(_pdf_store),
+┬á ┬á ┬á ┬á "active_jobs": ┬á sum(1 for j in _job_store.values()
+┬á ┬á ┬á ┬á ┬á ┬á ┬á ┬á ┬á ┬á ┬á ┬á ┬á ┬á ┬áif j["status"] == "processing"),
+┬á ┬á }
+
+@app.get("/stats")
+def stats():
+┬á ┬á """Usage statistics for monitoring."""
+┬á ┬á return {
+┬á ┬á ┬á ┬á "total_requests": ┬á _stats["total_requests"],
+┬á ┬á ┬á ┬á "total_async_jobs": _stats["total_async_jobs"],
+┬á ┬á ┬á ┬á "uptime_since": ┬á ┬á _stats["start_time"],
+┬á ┬á ┬á ┬á "cached_pdfs": ┬á ┬á ┬álen(_pdf_store),
+┬á ┬á ┬á ┬á "job_count": ┬á ┬á ┬á ┬álen(_job_store),
+┬á ┬á }
+
+@app.post("/analyze")
+async def analyze_sync(request: Request, file: UploadFile = File(...)):
+┬á ┬á """
+┬á ┬á Synchronous analysis ΓÇö upload image, get full assessment JSON.
+┬á ┬á Best for: small images, fast responses (< 10s).
+┬á ┬á """
+┬á ┬á _check_rate_limit(request.client.host)
+┬á ┬á _stats["total_requests"] += 1
+
+┬á ┬á raw ┬á= await file.read()
+┬á ┬á if len(raw) > 20 * 1024 * 1024:
+┬á ┬á ┬á ┬á raise HTTPException(400, "Image too large (max 20 MB).")
+
+┬á ┬á # Check cache (avoid re-processing identical images)
+┬á ┬á h = _img_hash(raw)
+┬á ┬á if h in _cache:
+┬á ┬á ┬á ┬á cached = _cache[h].copy()
+┬á ┬á ┬á ┬á cached["cached"] = True
+┬á ┬á ┬á ┬á return JSONResponse(cached)
+
+┬á ┬á nparr = np.frombuffer(raw, np.uint8)
+┬á ┬á bgr ┬á = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
+┬á ┬á if bgr is None:
+┬á ┬á ┬á ┬á raise HTTPException(400, "Invalid image file. Upload JPG/PNG/WEBP.")
+
+┬á ┬á result = _run_pipeline(bgr, file.filename or "upload.jpg")
+
+┬á ┬á # Cache result
+┬á ┬á _cache[h] = result
+┬á ┬á if len(_cache) > 100:
+┬á ┬á ┬á ┬á oldest = next(iter(_cache))
+┬á ┬á ┬á ┬á del _cache[oldest]
+
+┬á ┬á result["cached"] = False
+┬á ┬á return JSONResponse(result)
+
+@app.post("/analyze/async")
+async def analyze_async_start(request: Request, file: UploadFile = File(...)):
+┬á ┬á """
+┬á ┬á Async analysis ΓÇö returns job_id immediately.
+┬á ┬á Poll GET /status/{job_id} for progress and results.
+┬á ┬á Best for: large/high-res images, mobile apps.
+┬á ┬á """
+┬á ┬á _check_rate_limit(request.client.host)
+┬á ┬á _stats["total_requests"] ┬á += 1
+┬á ┬á _stats["total_async_jobs"] += 1
+
+┬á ┬á raw ┬á= await file.read()
+┬á ┬á if len(raw) > 20 * 1024 * 1024:
+┬á ┬á ┬á ┬á raise HTTPException(400, "Image too large (max 20 MB).")
+
+┬á ┬á nparr = np.frombuffer(raw, np.uint8)
+┬á ┬á bgr ┬á = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
+┬á ┬á if bgr is None:
+┬á ┬á ┬á ┬á raise HTTPException(400, "Invalid image file. Upload JPG/PNG/WEBP.")
+
+┬á ┬á job_id = str(uuid.uuid4())
+┬á ┬á fname ┬á= file.filename or "upload.jpg"
+┬á ┬á _job_store[job_id] = {
+┬á ┬á ┬á ┬á "status": ┬á ┬á"processing",
+┬á ┬á ┬á ┬á "created_at": datetime.datetime.now().isoformat(),
+┬á ┬á ┬á ┬á "progress": ┬á 0,
+┬á ┬á ┬á ┬á "result": ┬á ┬áNone,
+┬á ┬á ┬á ┬á "error": ┬á ┬á None,
+┬á ┬á ┬á ┬á "_ts": ┬á ┬á ┬á time.monotonic(), ┬á # for TTL eviction
+┬á ┬á }
+
+┬á ┬á # FIXED v4.1: Use asyncio + ThreadPoolExecutor instead of threading.Thread.
+┬á ┬á # threading.Thread in an async ASGI app can block the event loop.
+┬á ┬á bgr_copy = bgr.copy() ┬á # copy before async so no shared state
+┬á ┬á async def _start_worker():
+┬á ┬á ┬á ┬á loop = asyncio.get_event_loop()
+┬á ┬á ┬á ┬á def _worker():
+┬á ┬á ┬á ┬á ┬á ┬á try:
+┬á ┬á ┬á ┬á ┬á ┬á ┬á ┬á _job_store[job_id]["progress"] = 20
+┬á ┬á ┬á ┬á ┬á ┬á ┬á ┬á result = _run_pipeline(bgr_copy, fname)
+┬á ┬á ┬á ┬á ┬á ┬á ┬á ┬á _job_store[job_id].update({
+┬á ┬á ┬á ┬á ┬á ┬á ┬á ┬á ┬á ┬á "status": ┬á "done",
+┬á ┬á ┬á ┬á ┬á ┬á ┬á ┬á ┬á ┬á "progress": 100,
+┬á ┬á ┬á ┬á ┬á ┬á ┬á ┬á ┬á ┬á "result": ┬á result,
+┬á ┬á ┬á ┬á ┬á ┬á ┬á ┬á ┬á ┬á "_ts": ┬á ┬á ┬átime.monotonic(),
+┬á ┬á ┬á ┬á ┬á ┬á ┬á ┬á })
+┬á ┬á ┬á ┬á ┬á ┬á ┬á ┬á _evict_old_jobs() ┬á # cleanup after each job
+┬á ┬á ┬á ┬á ┬á ┬á except Exception as e:
+┬á ┬á ┬á ┬á ┬á ┬á ┬á ┬á _job_store[job_id].update({
+┬á ┬á ┬á ┬á ┬á ┬á ┬á ┬á ┬á ┬á "status": "error",
+┬á ┬á ┬á ┬á ┬á ┬á ┬á ┬á ┬á ┬á "error": ┬ástr(e),
+┬á ┬á ┬á ┬á ┬á ┬á ┬á ┬á ┬á ┬á "_ts": ┬á ┬átime.monotonic(),
+┬á ┬á ┬á ┬á ┬á ┬á ┬á ┬á })
+┬á ┬á ┬á ┬á await loop.run_in_executor(_executor, _worker)
+
+┬á ┬á asyncio.create_task(_start_worker())
+
+┬á ┬á return JSONResponse({
+┬á ┬á ┬á ┬á "job_id": ┬á ┬ájob_id,
+┬á ┬á ┬á ┬á "status": ┬á ┬á"processing",
+┬á ┬á ┬á ┬á "poll_url": ┬áf"/status/{job_id}",
+┬á ┬á }, status_code=202)
+
+@app.get("/status/{job_id}")
+def job_status(job_id: str):
+┬á ┬á """
+┬á ┬á Poll async job status.
+┬á ┬á Returns: processing | done | error
+┬á ┬á When done, includes full result payload.
+┬á ┬á """
+┬á ┬á job = _job_store.get(job_id)
+┬á ┬á if job is None:
+┬á ┬á ┬á ┬á raise HTTPException(404, "Job not found. It may have expired.")
+┬á ┬á return JSONResponse({
+┬á ┬á ┬á ┬á "job_id": ┬á ┬á job_id,
+┬á ┬á ┬á ┬á "status": ┬á ┬á job["status"],
+┬á ┬á ┬á ┬á "progress": ┬á job.get("progress", 0),
+┬á ┬á ┬á ┬á "created_at": job.get("created_at"),
+┬á ┬á ┬á ┬á "result": ┬á ┬á job.get("result"),
+┬á ┬á ┬á ┬á "error": ┬á ┬á ┬ájob.get("error"),
+┬á ┬á })
+
+@app.get("/report/{report_id}")
+def download_report(report_id: str):
+┬á ┬á """Return the generated PDF as a downloadable file."""
+┬á ┬á # FIXED v4.1: use TTL-aware getter
+┬á ┬á pdf = _get_pdf(report_id)
+┬á ┬á if pdf is None:
+┬á ┬á ┬á ┬á raise HTTPException(404, "Report not found or expired (PDFs expire after 1 hour).")
+
+┬á ┬á ts ┬á = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+┬á ┬á path = f"reports/AutoGuard_{ts}.pdf"
+┬á ┬á with open(path, "wb") as f:
+┬á ┬á ┬á ┬á f.write(pdf)
+
+┬á ┬á return FileResponse(
+┬á ┬á ┬á ┬á path,
+┬á ┬á ┬á ┬á media_type="application/pdf",
+┬á ┬á ┬á ┬á filename ┬á=f"AutoGuard_Assessment_{ts}.pdf",
+┬á ┬á )
+
+# ΓöÇΓöÇ Fraud Detection Endpoint ΓöÇ
+@app.post("/fraud/analyze")
+async def fraud_check(request: Request, file: UploadFile = File(...)):
+┬á ┬á """
+┬á ┬á Standalone fraud analysis on uploaded image.
+┬á ┬á Returns: fraud_score, verdict, flags, ELA suspicion, plate OCR.
+┬á ┬á """
+┬á ┬á _check_rate_limit(request.client.host)
+┬á ┬á raw = await file.read()
+┬á ┬á if len(raw) > 20 * 1024 * 1024:
+┬á ┬á ┬á ┬á raise HTTPException(400, "Image too large (max 20 MB).")
+┬á ┬á nparr = np.frombuffer(raw, np.uint8)
+┬á ┬á bgr ┬á = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
+┬á ┬á if bgr is None:
+┬á ┬á ┬á ┬á raise HTTPException(400, "Invalid image file.")
+
+┬á ┬á result = fraud_detector.analyze_fraud(bgr, raw)
+┬á ┬á return JSONResponse(result)
+
+# ΓöÇΓöÇ Multi-Angle Validation Endpoint ΓöÇ
+@app.post("/validate/angles")
+async def validate_angles(request: Request, files: List[UploadFile] = File(...)):
+┬á ┬á """
+┬á ┬á Validate multi-angle images for a single claim submission.
+┬á ┬á Requires minimum 3 images (front, rear, side, damage close-up).
+┬á ┬á Returns: is_valid, angles_covered, missing angles, per-image report.
+┬á ┬á """
+┬á ┬á _check_rate_limit(request.client.host)
+┬á ┬á if len(files) < 1:
+┬á ┬á ┬á ┬á raise HTTPException(400, "At least 1 image required.")
+┬á ┬á if len(files) > 8:
+┬á ┬á ┬á ┬á raise HTTPException(400, "Maximum 8 images per submission.")
+
+┬á ┬á images ┬á ┬á= []
+┬á ┬á filenames = []
+┬á ┬á for f in files:
+┬á ┬á ┬á ┬á raw = await f.read()
+┬á ┬á ┬á ┬á if len(raw) > 20 * 1024 * 1024:
+┬á ┬á ┬á ┬á ┬á ┬á raise HTTPException(400, f"Image '{f.filename}' too large (max 20 MB).")
+┬á ┬á ┬á ┬á nparr = np.frombuffer(raw, np.uint8)
+┬á ┬á ┬á ┬á bgr ┬á = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
+┬á ┬á ┬á ┬á if bgr is None:
+┬á ┬á ┬á ┬á ┬á ┬á raise HTTPException(400, f"Invalid image: {f.filename}")
+┬á ┬á ┬á ┬á images.append(bgr)
+┬á ┬á ┬á ┬á filenames.append(f.filename or f"image_{len(images)}.jpg")
+
+┬á ┬á result = multi_angle_validator.validate_angles(images, filenames)
+┬á ┬á return JSONResponse(result)
+
+# ΓöÇΓöÇ Server Entry ΓöÇΓöÇ
+if __name__ == "__main__":
+┬á ┬á import socket
+┬á ┬á hostname = socket.gethostname()
+┬á ┬á try:
+┬á ┬á ┬á ┬á local_ip = socket.gethostbyname(hostname)
+┬á ┬á except Exception:
+┬á ┬á ┬á ┬á local_ip = "192.168.x.x"
+
+┬á ┬á print(f"\n{'='*55}")
+┬á ┬á print(f" ┬á≡ƒÜù ┬áAutoGuard API v{MODEL_VERSION}")
+┬á ┬á print(f"{'='*55}")
+┬á ┬á print(f" ┬áLocal: ┬á http://localhost:8000")
+┬á ┬á print(f" ┬áNetwork: http://{local_ip}:8000")
+┬á ┬á print(f" ┬áDocs: ┬á ┬áhttp://localhost:8000/docs")
+┬á ┬á print(f" ┬áMobile: ┬áset API_URL = 'http://{local_ip}:8000'")
+┬á ┬á print(f"{'='*55}\n")
+┬á ┬á uvicorn.run(app, host="0.0.0.0", port=8000, reload=False)
+
+
+
+
+
+RESULT
+             
+     
+         
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+TESTING
+TESTING METHODOLGY
+Testing is an important phase in the development of the Vehicle Damage Assessment System. It ensures that the system performs accurately, efficiently, and reliably under different conditions. The proposed system was tested using multiple vehicle images containing various types of damages such as dents, scratches, cracks, and bumper deformations. The testing process focused on validating the correctness of damage detection, segmentation accuracy, severity classification, repair cost estimation, and report generation.
+Both functional testing and performance testing were carried out to evaluate the behavior of individual modules as well as the complete integrated system. The YOLOv8 segmentation model was tested using sample images from different lighting conditions, viewing angles, and vehicle types to ensure robustness and generalization capability. The outputs generated by the system were compared with expected results to measure reliability and consistency.
+The testing phase also verified whether the system could successfully process images in real time without major delays. Special attention was given to checking the correctness of segmentation masks, accurate identification of damaged regions, and proper calculation of damage percentage. Human verification was additionally used to validate uncertain predictions and improve trustworthiness in the final assessment.
+TYPES OF TESTING
+1. UNIT TESTING
+Unit testing was performed on individual modules such as image preprocessing, damage detection, severity classification, and cost estimation. Each module was tested independently to verify whether it produced correct outputs for valid inputs.
+Example:
+The preprocessing module was tested to confirm proper image resizing and normalization. 
+The severity classification module was tested with different damage percentages to ensure correct labeling as Minor, Moderate, or Severe. 
+
+2. INTERGRATION TESTING
+Integration testing was carried out after combining all system modules. The interaction between preprocessing, YOLOv8 segmentation, damage quantification, and report generation modules was verified to ensure smooth data flow without errors.
+Objective:
+Validate communication between modules. 
+Ensure outputs from one module are correctly passed to the next module. 
+
+3. SYSTEM TESTING
+System testing evaluated the complete application as a whole. The entire workflow starting from image upload to final report generation was tested under realistic conditions.
+Verified Functions:
+Vehicle image upload 
+Damage detection 
+Segmentation visualization 
+Severity estimation 
+Repair cost calculation 
+Final report generation 
+
+
+4. PERFORMANCE TESTING
+Performance testing measured the speed and efficiency of the system during image analysis.
+Parameters Evaluated:
+Processing time 
+Model inference speed 
+Response time 
+Memory utilization 
+The system successfully generated outputs within a short duration, making it suitable for real-time insurance claim processing.
+Test Cases
+Test Case ID
+Test Scenario
+Input
+Expected Output
+Result
+TC01
+Upload valid vehicle image
+Vehicle image with scratch
+Image accepted successfully
+Pass
+TC02
+Detect damaged region
+Damaged car image
+Damage region highlighted
+Pass
+TC03
+Severity classification
+Moderate damage image
+Severity labeled as Moderate
+Pass
+TC04
+Repair cost estimation
+Severe damage image
+Estimated repair cost generated
+Pass
+TC05
+Report generation
+Processed vehicle image
+Final report displayed/saved
+Pass
+TESTING RESULT
+The testing results indicate that the proposed AI-based vehicle damage assessment system performs effectively in detecting and analyzing vehicle damages. The YOLOv8 segmentation model accurately identified damaged regions and generated reliable segmentation masks. The severity classification and repair cost estimation modules also produced consistent outputs based on the detected damage area.
+The system demonstrated good performance under different testing scenarios and successfully reduced manual intervention in the damage assessment process. Real-time processing capability and automated report generation further improved the efficiency of insurance claim evaluation. Overall, the testing phase confirmed that the system is reliable, scalable, and suitable for practical implementation in insurance claim automation.
+VALIDATION
+VALIDATION METHODOLOGY
+Validation is the process of evaluating whether the developed Vehicle Damage Assessment System meets the intended objectives and produces accurate results in real-world scenarios. The validation phase ensures that the proposed AI-based solution correctly detects vehicle damages, estimates severity levels, and generates reliable repair cost predictions suitable for insurance claim processing.
+The system was validated using different vehicle images containing multiple damage types such as dents, scratches, cracks, bumper damage, and broken components. Images captured under different lighting conditions, camera angles, and backgrounds were also tested to verify the robustness of the YOLOv8 segmentation model. The generated outputs were compared with manually observed results and expert evaluations to confirm correctness and consistency.
+The validation process focused on verifying:
+Accuracy of damage detection 
+Precision of segmentation masks 
+Correct severity classification 
+Reliability of repair cost estimation 
+Effectiveness of report generation 
+The obtained results demonstrated that the system performs efficiently in identifying damaged regions and classifying damage severity with good consistency.
+
+VALIDATION TECHNIQUE
+1. Model Validation
+The YOLOv8 segmentation model was validated using sample vehicle damage images. The predicted segmentation masks were compared with actual damaged regions to evaluate detection accuracy.
+Validation Parameters:
+Detection accuracy 
+Segmentation precision 
+Confidence score evaluation 
+Correct localization of damage regions 
+The model successfully detected visible damage regions in most test images with high confidence.
+
+2. Functional Validation
+Functional validation verified whether each module performs according to the project requirements.
+Validated Functionalities:
+Vehicle image upload 
+Image preprocessing 
+Damage segmentation 
+Damage area calculation 
+Severity classification 
+Repair cost estimation 
+Final report generation 
+All modules operated successfully and produced expected outputs.
+
+3. Severity Validation
+The severity estimation module was validated by comparing calculated damage percentages with predefined threshold ranges.
+Severity Levels:
+Minor Damage 
+Moderate Damage 
+Severe Damage 
+The system correctly categorized damages based on the detected damaged area percentage.
+
+4. Human Expert Validation
+To improve reliability, AI-generated outputs were reviewed by human experts. Insurance surveyors or evaluators verified whether the detected damage regions and estimated severity levels matched real-world observations.
+This human-in-the-loop validation approach improved transparency, reduced prediction uncertainty, and increased trust in the final assessment process.
+
+
+
+
+
+VALIDATION RESULT
+Validation Parameter
+Expected Result
+Obtained Result
+Status
+Damage Detection
+Accurate damaged region identification
+Successfully detected damage
+Validated
+Segmentation Accuracy
+Precise mask generation
+Accurate segmentation masks generated
+Validated
+Severity Classification
+Correct severity level assignment
+Correct classification achieved
+Validated
+Repair Cost Estimation
+Logical repair cost prediction
+Reliable estimation generated
+Validated
+Report Generation
+Proper output report creation
+Reports generated successfully
+Validated
+
+VALIDATION OUTCOME
+The validation results confirm that the proposed vehicle damage assessment system effectively performs automated damage analysis using deep learning and computer vision techniques. The YOLOv8 segmentation model accurately localized damage regions and enabled reliable severity estimation. The integration of automated analysis with human expert validation improved the overall accuracy and trustworthiness of insurance claim evaluation.
+
+
+
+
+
+CONCLUSION
+This mini project focused on the development of an intelligent Vehicle Damage Assessment System for Insurance Claim Automation using Artificial Intelligence, Deep Learning, and Computer Vision techniques. The primary aim of the project was to reduce the limitations of traditional manual vehicle inspection methods by introducing an automated and efficient damage analysis framework. The proposed system successfully utilized the YOLOv8 segmentation model to identify damaged vehicle regions accurately and generate meaningful outputs for insurance claim processing. The system was designed to process vehicle images uploaded by users and automatically detect different types of damages such as scratches, dents, cracks, and body deformations. Through image preprocessing operations including resizing and normalization, the quality and consistency of the input images were improved before being passed to the deep learning model. The segmentation-based approach provided pixel-level localization of damage regions, allowing the system to precisely measure the extent of damage instead of relying only on bounding-box detection methods.
+One of the major achievements of the project is the implementation of automated damage severity estimation. Based on the percentage of damaged area detected from the segmentation masks, the system categorized damages into different severity levels such as Minor, Moderate, and Severe. This classification process simplified insurance claim analysis and supported faster decision-making. The project also incorporated a repair cost estimation module that generated approximate repair costs using rule-based calculations derived from the detected severity and number of damaged regions.
+The proposed system significantly reduces the workload of insurance surveyors and improves operational efficiency in insurance companies. Traditional manual inspection methods are often time-consuming, inconsistent, and dependent on human judgment. In contrast, the developed AI-based system offers standardized and objective damage evaluation, reducing the possibility of human error and bias. The ability to automate major stages of claim assessment can help organizations process claims more quickly and improve customer satisfaction.
+
+Another important contribution of the project is the integration of a human-in-the-loop verification mechanism. Although deep learning models provide highly accurate predictions, certain real-world damage scenarios may still be complex or uncertain. To address this challenge, the system allows insurance experts to review AI-generated outputs before final claim approval. This combination of artificial intelligence and human expertise ensures reliability, fairness, and transparency in the insurance claim process.
+The testing and validation phases confirmed that the system performs effectively under different conditions, including varying lighting environments, vehicle models, and damage types. The YOLOv8 segmentation model demonstrated strong capability in accurately localizing damaged regions and generating reliable severity predictions. The generated reports and visual overlays also improved interpretability and made the results easier for insurance professionals and customers to understand.
+From a technical perspective, the project provided practical exposure to several advanced technologies including deep learning, image segmentation, computer vision, machine learning workflows, and automated decision-support systems. The modular architecture adopted in the project improved scalability and flexibility, allowing future enhancements and integration with real-world insurance platforms.
+The proposed system also supports the broader objective of digital transformation in the insurance and automotive industries. By reducing processing time, minimizing paperwork, and enabling real-time assessment, the system contributes toward smarter and more efficient claim management solutions. It also supports the adoption of intelligent automation technologies in modern industrial applications.
+In future work, the system can be enhanced by integrating larger datasets, advanced neural network architectures, and cloud-based deployment for real-time accessibility. Additional features such as fraud detection, mobile application support, multi-vehicle analysis, and video-based damage assessment can further improve system capabilities. Integration with insurance databases and service center management systems may also enhance practical usability and commercial adoption.
+
+
+FUTURE SCOPE
+The proposed Vehicle Damage Assessment System can be further enhanced by integrating more advanced deep learning models and larger real-world datasets to improve detection accuracy and robustness. Future versions of the system may utilize transformer-based vision models, improved segmentation architectures, and adaptive learning techniques to accurately identify complex damages under challenging environmental conditions such as poor lighting, reflections, rain, or occlusions. Training the model with diverse datasets containing multiple vehicle types and damage categories can also improve the systemΓÇÖs generalization capability and reliability in real-world insurance applications. Another important future enhancement is the development of a mobile and cloud-based damage assessment platform. The system can be integrated into smartphone applications that allow users to capture vehicle images directly from mobile cameras and instantly receive damage analysis reports. Cloud integration would enable real-time processing, centralized data storage, and remote accessibility for insurance companies, surveyors, and customers. This would significantly improve claim processing speed, reduce paperwork, and support fully digital insurance workflows.
+The project can also be extended by incorporating intelligent fraud detection mechanisms and automated decision-support systems. By analyzing image metadata, claim history, and damage patterns, the system could identify suspicious or manipulated claims and reduce insurance fraud. Integration with insurance company databases, service centers, and repair management systems can further automate claim approval, repair scheduling, and customer communication processes. These improvements would increase operational efficiency and transparency in insurance management.
+In the future, the system may support real-time video-based vehicle inspection and multi-vehicle damage analysis using advanced computer vision techniques. Integration with IoT devices, smart cameras, and autonomous vehicle technologies can enable continuous monitoring and automatic accident assessment. The addition of AI-driven repair recommendation systems and accurate market-based cost prediction models could further improve practical usability. 
+
+REFERENCES
+Dimitrios Mallios, Li Xiaofei, Niall McLaughlin, Jesus Martinez Del Rincon, Clare Galbraith, and Rory Garland,ΓÇ£Vehicle Damage Severity Estimation for Insurance Operations Using In-The-Wild Mobile Images,ΓÇ¥IEEE Conference on Computer Vision and Pattern Recognition (CVPR) Workshops, 2021. 
+Qinghui Zhang, Xianing Chang, and Shanfeng Bian,ΓÇ£Vehicle-Damage-Detection Segmentation Algorithm Based on Improved Mask RCNN,ΓÇ¥IEEE Access, vol. 9, pp. 699ΓÇô710, 2021. 
+Yuntao Ma, Hiva Ghanbari, Tianyuan Huang, Jeremy Irvin, Oliver Brady, Sofian Zalouk, Hao Sheng, Andrew Ng, Ram Rajagopal, and Mayur Narsude,ΓÇ£A System for Automated Vehicle Damage Localization and Severity Estimation Using Deep Learning,ΓÇ¥Proceedings of the IEEE International Conference on Big Data, 2020. 
+Joseph Redmon and Ali Farhadi,ΓÇ£YOLO: Real-Time Object Detection,ΓÇ¥Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR), 2016. 
+Ultralytics,ΓÇ£YOLOv8 Documentation and Segmentation Models,ΓÇ¥Ultralytics Official Website 
+Kaiming He, Georgia Gkioxari, Piotr Doll├ír, and Ross Girshick,ΓÇ£Mask R-CNN,ΓÇ¥IEEE International Conference on Computer Vision (ICCV), 2017. 
+Mingxing Tan and Quoc V. Le,ΓÇ£EfficientNet: Rethinking Model Scaling for Convolutional Neural Networks,ΓÇ¥International Conference on Machine Learning (ICML), 2019. 
+Olaf Ronneberger, Philipp Fischer, and Thomas Brox,ΓÇ£U-Net: Convolutional Networks for Biomedical Image Segmentation,ΓÇ¥Medical Image Computing and Computer-Assisted Intervention (MICCAI), 2015. 
+Ian Goodfellow, Yoshua Bengio, and Aaron Courville,Deep Learning,MIT Press, 2016. 
+Rafael C. Gonzalez and Richard E. Woods,Digital Image Processing,Pearson Education, 4th Edition, 2018. 
+
+
